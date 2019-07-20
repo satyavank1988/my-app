@@ -75,7 +75,7 @@ Make sure We are able to connect kubernetes cluster, (This has been tested in AW
 
 Deploy the helm chart by executing below command.
 
-`helm install -n my-app ./helm-chart/my-app/`
+`helm install -n my-app helm-chart/my-app/`
 
 
 Now run below command to check pods get created.
@@ -92,6 +92,22 @@ Run below command and select service. It i will end point of my-app LB balancer 
 `kubectl describe service my-app  --namespace=prod`
 
 
+# Deploy new version of my-app:2.0 
+make a change in docker file, 
+comment line no 7 and un-comment line no 9.
+
+repeat Step1 and Step2  and change version 1.0 to 2.0.
+
+Make change 1.0 to 2.0 in values.yaml file.
+
+### Upgrade new version of application.
+Run below command.
+
+`helm upgrade my-app helm-chart/my-app/`
+
+check upgrade status 
+
+`helm history my-app`
 
 
 
