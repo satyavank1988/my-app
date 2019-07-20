@@ -64,7 +64,9 @@ To create a new helm chart , we just need to run the command helm create. this w
 `helm create my-app`
 
 replace `values.yaml` file with `value.yaml` which is in our repo.
+
 replace `templates/deployment.yaml` file with the `deployment.yaml` which is in our repo.
+
 
 ### Step4: Deploy the my-app application in Kubernetes.
 Make sure We are able to connect kubernetes cluster, (This has been tested in AWS platopform using Kops tool.)
@@ -73,16 +75,28 @@ Make sure We are able to connect kubernetes cluster, (This has been tested in AW
 
 Deploy the helm chart by executing below command.
 
-`helm install -n my-app ./helm-chart/my-app/
+`helm install -n my-app ./helm-chart/my-app/`
+
 
 Now run below command to check pods get created.
 
 `kubectl get pods`
 
 
-Now check service list and url of running app.
+Now check service list.
 
-`kube
+`kubectl get service`
+
+Run below command and select service. It i will end point of my-app LB balancer ip.
+
+`kubectl describe service my-app  --namespace=prod`
+
+
+
+
+
+
+
 
 
 
